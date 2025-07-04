@@ -9,6 +9,7 @@ from selenium.webdriver.chrome.options import Options
 
 from dotenv import load_dotenv
 
+load_dotenv()
 # from webdriver_manager.microsoft import EdgeChromiumDriverManager
 # from selenium.webdriver.edge.service import Service
 # from selenium.webdriver.edge.options import Options
@@ -836,8 +837,8 @@ def send_mail():
     email += """
     </body>
     """
- 
-    webhook_url = "https://prod-37.westus.logic.azure.com:443/workflows/cd1cff5fa9324fffa2d8a8e95209df27/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=DK7I6ppkIqu0gWH_mMLLQJDthuqMvbghY6LZuWFjHGA"
+    webhook_link = os.getenv("WEBHOOK_LINK")
+    webhook_url = webhook_link
     if mensagens:
         payload = {
             "email":email.replace('\n','')
@@ -864,6 +865,8 @@ def execute_scripts(dia):
     make_excel()
     send_mail()
     limpa_variaveis()
+
+
 
     
 if __name__ == "__main__":
