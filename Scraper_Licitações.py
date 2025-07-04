@@ -6,10 +6,13 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.options import Options
-import openpyxl
+
+from dotenv import load_dotenv
+
 # from webdriver_manager.microsoft import EdgeChromiumDriverManager
 # from selenium.webdriver.edge.service import Service
 # from selenium.webdriver.edge.options import Options
+
 import queue
 import numpy as np
 import threading
@@ -865,8 +868,6 @@ def execute_scripts(dia):
     
 if __name__ == "__main__":
     markers=[ f"08:{i:02d}" for i in range(60)]
-
-    
     while True:
         dia = datetime.now().strftime("%d/%m/%Y")
         now = datetime.now().strftime("%H:%M")
@@ -875,6 +876,7 @@ if __name__ == "__main__":
             print("started")
             execute_scripts(dia)
             dia_l = datetime.now().strftime("%d")
+            limpa_arquivos()
             if dia_l == "01":
                 limpa_arquivos()
                 
