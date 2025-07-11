@@ -870,5 +870,4 @@ def execute_scripts(dia):
 
     
 if __name__ == "__main__":
-    dia = datetime.now().strftime("%d/%m/%Y")
-    execute_scripts(dia)
+    print("ITS WORKS!!!")
